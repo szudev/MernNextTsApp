@@ -1,6 +1,6 @@
 import mongoose, { ConnectOptions } from "mongoose";
 
-export const ConnectToMongoDB = async () => {
+export const ConnectToMongoDB = async (): Promise<void> => {
   await mongoose
     .connect(
       process.env.CONNECTION_STRING as string,
@@ -14,7 +14,7 @@ export const ConnectToMongoDB = async () => {
     });
 };
 
-export const DisconnectFromMongoDB = async () => {
+export const DisconnectFromMongoDB = async (): Promise<void> => {
   await mongoose.disconnect().catch((err) => {
     console.log(`[DB-ERROR]: Failed to disconnect, Error: ${err.message}`);
   });
